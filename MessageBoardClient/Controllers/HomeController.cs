@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using CretaceousClient.Models;
+using MessageBoardClient.Models;
 
-namespace CretaceousClient.Controllers;
+namespace MessageBoardClient.Controllers;
 
 public class HomeController : Controller
 {

@@ -5,9 +5,10 @@ namespace MessageBoardClient.Controllers;
 
 public class MessagesController : Controller
 {
-  public IActionResult Index()
+  [Route("[controller]/{group}")]
+  public IActionResult Index(string group)
   {
-    List<Message> messages = Message.GetMessages();
+    List<Message> messages = Message.GetMessages(group);
     return View(messages);
   }
 

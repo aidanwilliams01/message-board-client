@@ -1,6 +1,6 @@
 #nullable enable
 
-namespace CretaceousClient.Models;
+namespace MessageBoardClient.Models;
 
 public class ErrorViewModel
 {

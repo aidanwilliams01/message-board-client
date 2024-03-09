@@ -13,9 +13,9 @@ namespace MessageBoardClient.Models
     public DateTime MessageDateTime { get; set; }
     public string UserName { get; set; }
 
-    public static List<Message> GetMessages()
+    public static List<Message> GetMessages(string group)
     {
-      var apiCallTask = ApiHelper.GetAll();
+      var apiCallTask = ApiHelper.GetAll(group);
       var result = apiCallTask.Result;
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);

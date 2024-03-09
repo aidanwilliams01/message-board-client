@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Groups";
+}
+
+<h1>All Groups:</h1>
+
+<ol>
+@foreach (Group group in Model)
+{
+  <li><strong><a href="/Messages/@group.Name">@group.Name</a></strong></li>
+}
+</ol>
