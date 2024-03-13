@@ -2,11 +2,11 @@
     ViewData["Title"] = "Messages";
 }
 
-<h1>All Messages:</h1>
+<h1>Messages for @ViewBag.Group:</h1>
 
 <h3>Actions:</h3>
 
-<p>@Html.ActionLink("Post a new message", "Create")</p>
+<p>@Html.ActionLink("Post a new message", "Create", "Messages", new { group = $"{ViewBag.Group}" }, null)</p>
 
 <h3>Messages:</h3>
 <ol>

@@ -1,0 +1,12 @@
+@{
+  ViewData["Title"] = $"Details for {Model.UserName} - {Model.MessageDateTime}";
+}
+
+<h8>@Model.UserName - @Model.MessageDateTime</h1>
+
+<p>@Model.Text</p>
+
+
+<p>@Html.ActionLink("Edit message", "Edit", new { id = @Model.MessageId })</p>
+<p>@Html.ActionLink("Delete message", "Delete", new { id = @Model.MessageId })</p>
+<p>@Html.ActionLink("Return to all messages", "Index", "Messages", new { group = $"{Model.Group}" }, null)</p>

@@ -5,21 +5,28 @@ namespace MessageBoardClient.Controllers;
 
 public class MessagesController : Controller
 {
-  [Route("[controller]/{group}")]
+  [Route("[controller]/Index/{group}")]
   public IActionResult Index(string group)
   {
     List<Message> messages = Message.GetMessages(group);
+    ViewBag.Group = group;
     return View(messages);
   }
 
+  // [Route("[controller]/Details/{id}")]
   public IActionResult Details(int id)
   {
     Message message = Message.GetDetails(id);
     return View(message);
   }
 
-  public ActionResult Create()
+  // [Route("[controller]")]
+  public ActionResult Create(string group)
   {
+    ViewBag.Group = group;
+    // DateTime theDate = DateTime.Now;
+    // theDate.ToString("yyyy-MM-dd H:mm:ss");
+    // ViewBag.DateTime = theDate;
     return View();
   }
 
@@ -27,7 +34,7 @@ public class MessagesController : Controller
   public ActionResult Create(Message message)
   {
     Message.Post(message);
-    return RedirectToAction("Index");
+    return RedirectToAction("Index", "Messages", new { group = $"{message.Group}" }, null);
   }
 
   public ActionResult Edit(int id)
@@ -52,7 +59,9 @@ public class MessagesController : Controller
   [HttpPost, ActionName("Delete")]
   public ActionResult DeleteConfirmed(int id)
   {
-    Message.Delete(id);
-    return RedirectToAction("Index");
+    string messageUserName = Message.GetDetails(id).UserName;
+    string messageGroup = Message.GetDetails(id).Group;
+    Message.Delete(id, messageUserName);
+    return RedirectToAction("Index", "Messages", new { group = $"{messageGroup}" }, null);
   }
 }

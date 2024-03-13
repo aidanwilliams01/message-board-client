@@ -1,0 +1,24 @@
+@{
+  ViewData["Title"] = $"Edit Message";
+}
+
+@model MessageBoardClient.Models.Message
+
+<h4>Edit Message</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.MessageId)
+  @Html.LabelFor(model => model.Text)
+  @Html.TextBoxFor(model => model.Text, new { @Value = Model.Text})
+  <br>
+  @Html.HiddenFor(model => model.UserName)
+  @Html.HiddenFor(model => model.MessageDateTime)
+  @Html.HiddenFor(model => model.Group)
+  @* @Html.TextBoxFor(model => model.UserName, new { @Value = Model.UserName}) *@
+  <br>
+  <input type="submit" value="Edit message" class="btn btn-primary"/>
+}
+
+<br>
+<p>@Html.ActionLink("Back to details", "Details", new {id = @Model.MessageId})</p>

@@ -10,6 +10,7 @@ namespace MessageBoardClient.Models
     public int MessageId { get; set; }
     public string Text { get; set; }
     public string Group { get; set; }
+    // split date and time
     public DateTime MessageDateTime { get; set; }
     public string UserName { get; set; }
 
@@ -44,12 +45,12 @@ namespace MessageBoardClient.Models
     public static void Put(Message message)
     {
       string jsonMessage = JsonConvert.SerializeObject(message);
-      ApiHelper.Put(message.MessageId, jsonMessage);
+      ApiHelper.Put(message.MessageId, message.UserName, jsonMessage);
     }
 
-    public static void Delete(int id)
+    public static void Delete(int id, string userName)
     {
-      ApiHelper.Delete(id);
+      ApiHelper.Delete(id, userName);
     }
   }
 }

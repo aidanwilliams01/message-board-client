@@ -1,0 +1,14 @@
+@{
+  ViewData["Title"] = "Delete Message";
+}
+
+@model MessageBoardClient.Models.Message
+
+<h4>Are you sure you want to delete this message?</h4>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" class="btn btn-primary"/>
+}
+
+@Html.ActionLink("Back to details", "Details", new { id = @Model.MessageId})
