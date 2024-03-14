@@ -8,6 +8,15 @@
 
 <p>@Html.ActionLink("Post a new message", "Create", "Messages", new { group = $"{ViewBag.Group}" }, null)</p>
 
+@using (Html.BeginForm())
+{
+<p>
+    Earlier Date: @Html.TextBox("earlierDateTime", null, new { @type = "datetime-local" })
+    Later Date: @Html.TextBox("laterDateTime", null, new { @type = "datetime-local" })
+    <input type="submit" value="Search" />
+</p>
+}
+
 <h3>Messages:</h3>
 <ol>
 @foreach (Message message in Model)

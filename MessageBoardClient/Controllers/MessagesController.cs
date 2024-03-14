@@ -3,30 +3,27 @@ using MessageBoardClient.Models;
 
 namespace MessageBoardClient.Controllers;
 
+// add authentication with identity?
+
 public class MessagesController : Controller
 {
   [Route("[controller]/Index/{group}")]
-  public IActionResult Index(string group)
+  public IActionResult Index(string group, string earlierDateTime, string laterDateTime)
   {
-    List<Message> messages = Message.GetMessages(group);
+    List<Message> messages = Message.GetMessages(group, earlierDateTime, laterDateTime);
     ViewBag.Group = group;
     return View(messages);
   }
 
-  // [Route("[controller]/Details/{id}")]
   public IActionResult Details(int id)
   {
     Message message = Message.GetDetails(id);
     return View(message);
   }
 
-  // [Route("[controller]")]
   public ActionResult Create(string group)
   {
     ViewBag.Group = group;
-    // DateTime theDate = DateTime.Now;
-    // theDate.ToString("yyyy-MM-dd H:mm:ss");
-    // ViewBag.DateTime = theDate;
     return View();
   }
 

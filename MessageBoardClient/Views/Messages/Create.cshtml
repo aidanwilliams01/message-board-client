@@ -14,10 +14,8 @@
   @Html.LabelFor(model => model.UserName)
   @Html.TextBoxFor(model => model.UserName)
   <br>
-  @Html.HiddenFor(model => model.MessageDateTime, DateTime.Now)
   @Html.HiddenFor(model => model.Group, $"{@ViewBag.Group}")
   <input type="submit" value="Post" class="btn btn-primary"/>
-  <p></p>
 }
 
 <br>

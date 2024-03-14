@@ -5,10 +5,10 @@ namespace MessageBoardClient.Models
 {
   public class ApiHelper
   {
-    public static async Task<string> GetAll(string group)
+    public static async Task<string> GetAll(string group, string earlierDateTime, string laterDateTime)
     {
       RestClient client = new RestClient("http://localhost:5000/");
-      RestRequest request = new RestRequest($"api/messages/{group}", Method.Get);
+      RestRequest request = new RestRequest($"api/messages/{group}?earlierDateTime={earlierDateTime}&laterDateTime={laterDateTime}", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }

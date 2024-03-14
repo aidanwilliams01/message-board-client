@@ -10,13 +10,12 @@ namespace MessageBoardClient.Models
     public int MessageId { get; set; }
     public string Text { get; set; }
     public string Group { get; set; }
-    // split date and time
-    public DateTime MessageDateTime { get; set; }
+    public DateTime MessageDateTime { get; set; } = DateTime.Now;
     public string UserName { get; set; }
 
-    public static List<Message> GetMessages(string group)
+    public static List<Message> GetMessages(string group, string earlierDateTime, string laterDateTime)
     {
-      var apiCallTask = ApiHelper.GetAll(group);
+      var apiCallTask = ApiHelper.GetAll(group, earlierDateTime, laterDateTime);
       var result = apiCallTask.Result;
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
